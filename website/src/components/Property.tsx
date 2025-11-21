@@ -109,7 +109,7 @@ export type PropertyProps = {
 export const Property = component$<PropertyProps>(
   ({ modifier, type, ...props }: PropertyProps) => {
     return (
-      <code class="!bg-transparent !p-0 !text-slate-600 dark:!text-slate-300">
+      <code class="bg-transparent! p-0! text-slate-600! dark:text-slate-300!">
         {modifier && (
           <span class="text-red-600 dark:text-red-400">{modifier} </span>
         )}
@@ -290,7 +290,8 @@ const Definition = component$<DefinitionProps>(({ parent, data }) => (
             <Definition parent={data.type} data={param.type} />
           </Fragment>
         ))}
-        ) {'=>'} <Definition parent={data.type} data={data.return} />
+        ) <span class="text-teal-600 dark:text-teal-400">{'=>'}</span>{' '}
+        <Definition parent={data.type} data={data.return} />
         {(parent === 'union' ||
           parent === 'intersect' ||
           (typeof data.return === 'object' &&
@@ -355,10 +356,11 @@ const Definition = component$<DefinitionProps>(({ parent, data }) => (
             class={{
               'text-sky-600 dark:text-sky-400':
                 data.name[0] === data.name[0].toUpperCase(),
-              '!text-slate-700 dark:!text-slate-300':
+              'text-slate-700! dark:text-slate-300!':
                 data.name[0] !== data.name[0].toUpperCase(),
             }}
             href={data.href}
+            prefetch={false}
           >
             {data.name}
           </Link>

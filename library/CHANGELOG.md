@@ -272,7 +272,7 @@ All notable changes to the library will be documented in this file.
 
 ## v0.20.0 (October 31, 2023)
 
-> Note: The library has been revised and refactored. There is a migration guide in the [release notes](https://github.com/fabian-hiller/valibot/releases/tag/v0.20.0).
+> Note: The library has been revised and refactored. There is a migration guide in the [release notes](https://github.com/open-circle/valibot/releases/tag/v0.20.0).
 
 - Add `getRestAndDefaultArgs` utility function
 - Add `rest` argument to `object` and `objectAsync` schema
@@ -358,7 +358,7 @@ All notable changes to the library will be documented in this file.
 
 ## v0.13.0 (August 23, 2023)
 
-> Note: The library has been revised and refactored. There is a migration guide in the [release notes](https://github.com/fabian-hiller/valibot/releases/tag/v0.13.0).
+> Note: The library has been revised and refactored. There is a migration guide in the [release notes](https://github.com/open-circle/valibot/releases/tag/v0.13.0).
 
 - Add `fallback` and `fallbackAsync` method (pull request #103)
 - Add `excludes` validation as negation of `includes`
