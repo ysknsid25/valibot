@@ -13,8 +13,17 @@ export const properties: Record<string, PropertyProps> = {
       href: '../BaseIssue/',
       generics: [
         {
-          type: 'custom',
-          name: 'TInput',
+          type: 'union',
+          options: [
+            {
+              type: 'custom',
+              name: 'TInput',
+            },
+            {
+              type: 'custom',
+              name: 'Date',
+            },
+          ],
         },
       ],
     },

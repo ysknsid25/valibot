@@ -9,7 +9,7 @@ import { _addIssue } from '../../utils/index.ts';
 /**
  * To number issue interface.
  */
-export interface ToNumberIssue<TInput> extends BaseIssue<TInput> {
+export interface ToNumberIssue<TInput> extends BaseIssue<TInput | number> {
   /**
    * The issue kind.
    */

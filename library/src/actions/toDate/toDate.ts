@@ -9,7 +9,7 @@ import { _addIssue } from '../../utils/index.ts';
 /**
  * To date issue interface.
  */
-export interface ToDateIssue<TInput> extends BaseIssue<TInput> {
+export interface ToDateIssue<TInput> extends BaseIssue<TInput | Date> {
   /**
    * The issue kind.
    */
