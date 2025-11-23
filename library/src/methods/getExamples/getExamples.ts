@@ -1,5 +1,4 @@
-import type { ExamplesAction } from '../../actions/examples/examples.ts';
-import type { ArrayInput } from '../../actions/types.ts';
+import type { ExamplesAction } from '../../actions/index.ts';
 import type {
   BaseIssue,
   BaseSchema,
@@ -20,7 +19,7 @@ type Schema =
         BaseSchema<unknown, unknown, BaseIssue<unknown>>,
         ...(
           | PipeItem<any, unknown, BaseIssue<unknown>> // eslint-disable-line @typescript-eslint/no-explicit-any
-          | ExamplesAction<unknown, ArrayInput>
+          | ExamplesAction<unknown, readonly unknown[]>
         )[],
       ]
     >
@@ -33,11 +32,14 @@ type Schema =
         ...(
           | PipeItem<any, unknown, BaseIssue<unknown>> // eslint-disable-line @typescript-eslint/no-explicit-any
           | PipeItemAsync<any, unknown, BaseIssue<unknown>> // eslint-disable-line @typescript-eslint/no-explicit-any
-          | ExamplesAction<unknown, ArrayInput>
+          | ExamplesAction<unknown, readonly unknown[]>
         )[],
       ]
     >;
 
+/**
+ * Recursively concat type.
+ */
 type RecursiveConcat<
   TRootPipe extends readonly // prettier-ignore
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

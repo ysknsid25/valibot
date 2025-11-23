@@ -1,4 +1,4 @@
-import type { BaseMetadata } from '../../types';
+import type { BaseMetadata } from '../../types/index.ts';
 
 /**
  * Examples action interface.
@@ -25,6 +25,8 @@ export interface ExamplesAction<TInput, TExamples extends readonly TInput[]>
  * @param examples_ The examples.
  *
  * @returns An examples action.
+ *
+ * @beta
  */
 // @__NO_SIDE_EFFECTS__
 export function examples<TInput, const TExamples extends readonly TInput[]>(
