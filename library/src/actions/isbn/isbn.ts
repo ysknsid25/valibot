@@ -62,14 +62,19 @@ export interface IsbnAction<
 }
 
 /**
- * ISBN-10 regex.
+ * ISBN separator regex.
  */
-const ISBN_10_REGEX = /^\d{9}[\dX]$/u;
+const ISBN_SEPARATOR_REGEX = /[- ]/gu;
 
 /**
- * ISBN-13 regex.
+ * ISBN-10 detection regex.
  */
-const ISBN_13_REGEX = /^\d{13}$/u;
+const ISBN_10_DETECTION_REGEX = /^\d{9}[\dX]$/u;
+
+/**
+ * ISBN-13 detection regex.
+ */
+const ISBN_13_DETECTION_REGEX = /^\d{13}$/u;
 
 /**
  * Creates an [ISBN](https://en.wikipedia.org/wiki/ISBN) action.
@@ -101,10 +106,10 @@ export function isbn(
     async: false,
     expects: null,
     requirement(input) {
-      const replacedInput = input.replace(/[- ]/gu, '');
-      if (ISBN_10_REGEX.test(replacedInput)) {
+      const replacedInput = input.replace(ISBN_SEPARATOR_REGEX, '');
+      if (ISBN_10_DETECTION_REGEX.test(replacedInput)) {
         return _isIsbn10(replacedInput);
-      } else if (ISBN_13_REGEX.test(replacedInput)) {
+      } else if (ISBN_13_DETECTION_REGEX.test(replacedInput)) {
         return _isIsbn13(replacedInput);
       }
       return false;
