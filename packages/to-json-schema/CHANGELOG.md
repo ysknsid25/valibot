@@ -2,6 +2,14 @@
 
 All notable changes to the library will be documented in this file.
 
+## v1.3.0 (June 01, 2025)
+
+- Add `ignoreActions` configuration to be able to ignore specific actions during conversion
+- Add `typeMode` configuration to be able to control whether to convert input or output type of schema
+- Add `ConversionContext`, `OverrideSchemaContext`, `OverrideActionContext` and `OverrideRefContext` to exports
+- Change JSDoc comments to improve documentation
+- Change build step to tsdown and Rolldown
+
 ## v1.2.0 (May 17, 2025)
 
 - Add support for title, description and examples in `metadata` action (pull request #1189)

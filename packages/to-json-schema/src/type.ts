@@ -6,18 +6,20 @@ import type * as v from 'valibot';
  */
 export interface ConversionContext {
   /**
-   * The JSON Schema definitions.
+   * The JSON Schema definitions that have already been created.
    */
   readonly definitions: Record<string, JSONSchema7>;
   /**
-   * The JSON Schema reference map.
+   * The JSON Schema reference map that is used to look up the reference ID
+   * for a given Valibot schema.
    */
   readonly referenceMap: Map<
     v.BaseSchema<unknown, unknown, v.BaseIssue<unknown>>,
     string
   >;
   /**
-   * The lazy schema getter map.
+   * The lazy schema getter map that is used internally to ensure that
+   * recursive lazy schemas are unwrapped only once.
    */
   readonly getterMap: Map<
     (input: unknown) => v.BaseSchema<unknown, unknown, v.BaseIssue<unknown>>,
@@ -95,12 +97,25 @@ export interface OverrideRefContext extends ConversionContext {
  */
 export interface ConversionConfig {
   /**
+   * Whether to convert the input or output type of the Valibot schema to JSON Schema.
+   *
+   * When set to 'input', conversion stops before the first potential type
+   * transformation action or second schema in any pipeline.
+   *
+   * When set to 'output', conversion of any pipelines starts from the last
+   * schema in the pipeline. Therefore, the output type must be specified
+   * explicitly with a schema after the last type transformation action.
+   *
+   * @beta
+   */
+  readonly typeMode?: 'ignore' | 'input' | 'output';
+  /**
    * The policy for handling incompatible schemas and actions.
    */
   readonly errorMode?: 'throw' | 'warn' | 'ignore';
   /**
    * The schema definitions for constructing recursive schemas. If not
-   * specified, the definitions are generated automatically.
+   * specified, the definitions are generated automatically as needed.
    */
   readonly definitions?: Record<
     string,
@@ -108,6 +123,10 @@ export interface ConversionConfig {
   >;
   /**
    * Overrides the JSON Schema conversion for a specific Valibot schema.
+   *
+   * Only return a JSON Schema if you want to override the default conversion
+   * behaviour and suppress errors for a specific schema. Returning either
+   * `null` or `undefined` will skip the override.
    *
    * @param context The conversion context.
    *
@@ -119,7 +138,17 @@ export interface ConversionConfig {
     context: OverrideSchemaContext
   ) => JSONSchema7 | null | undefined;
   /**
+   * The actions that should be ignored during the conversion.
+   *
+   * @beta
+   */
+  readonly ignoreActions?: string[];
+  /**
    * Overrides the JSON Schema reference for a specific Valibot action.
+   *
+   * Only return a JSON Schema if you want to override the default conversion
+   * behaviour and suppress errors for a specific action. Returning either
+   * `null` or `undefined` will skip the override.
    *
    * @param context The conversion context.
    *

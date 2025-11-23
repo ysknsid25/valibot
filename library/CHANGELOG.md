@@ -2,6 +2,12 @@
 
 All notable changes to the library will be documented in this file.
 
+## vX.X.X (Month DD, YYYY)
+
+- Add `toBigint`, `toBoolean`, `toDate`, `toNumber` and `toString` transformation actions (pull request #1212)
+- Export `RawCheckAddIssue`, `RawCheckContext`, `RawCheckIssueInfo`, `RawTransformAddIssue`, `RawTransformContext` and `RawTransformIssueInfo` types for better developer experience with `rawCheck` and `rawTransform` actions (pull request #1359)
+- Change build step to tsdown
+
 ## v1.1.0 (May 06, 2025)
 
 - Add `message` method to overwrite local error message configuration of a schema (pull request #1103)
@@ -268,7 +274,7 @@ All notable changes to the library will be documented in this file.
 
 ## v0.20.0 (October 31, 2023)
 
-> Note: The library has been revised and refactored. There is a migration guide in the [release notes](https://github.com/fabian-hiller/valibot/releases/tag/v0.20.0).
+> Note: The library has been revised and refactored. There is a migration guide in the [release notes](https://github.com/open-circle/valibot/releases/tag/v0.20.0).
 
 - Add `getRestAndDefaultArgs` utility function
 - Add `rest` argument to `object` and `objectAsync` schema
@@ -354,7 +360,7 @@ All notable changes to the library will be documented in this file.
 
 ## v0.13.0 (August 23, 2023)
 
-> Note: The library has been revised and refactored. There is a migration guide in the [release notes](https://github.com/fabian-hiller/valibot/releases/tag/v0.13.0).
+> Note: The library has been revised and refactored. There is a migration guide in the [release notes](https://github.com/open-circle/valibot/releases/tag/v0.13.0).
 
 - Add `fallback` and `fallbackAsync` method (pull request #103)
 - Add `excludes` validation as negation of `includes`
