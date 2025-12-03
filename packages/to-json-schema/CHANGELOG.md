@@ -5,6 +5,7 @@ All notable changes to the library will be documented in this file.
 ## vX.X.X (Month DD, YYYY)
 
 - Add support for `examples` action
+- Fix conversion of `exactOptional` object properties (pull request #1220)
 
 ## v1.3.0 (June 01, 2025)
 
