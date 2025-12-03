@@ -2,10 +2,11 @@
 
 All notable changes to the library will be documented in this file.
 
-## vX.X.X (Month DD, YYYY)
+## v1.4.0 (December 02, 2025)
 
 - Add support for `examples` action
 - Add support for `integer` when used with `minValue` and `maxValue` actions (pull request #1367)
+- Change Valibot peer dependency to v1.2.0
 - Fix conversion of `exactOptional` object properties (pull request #1220)
 - Fix conversion of `variant` to use `oneOf` instead of `anyOf` (pull request #1193)
 
