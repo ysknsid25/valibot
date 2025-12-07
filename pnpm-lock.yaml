@@ -183,6 +183,9 @@ importers:
 
   website:
     dependencies:
+      '@valibot/zod-to-valibot':
+        specifier: workspace:*
+        version: link:../codemod/zod-to-valibot
       '@vercel/og':
         specifier: 0.7.2
         version: 0.7.2
@@ -219,9 +222,6 @@ importers:
       valibot:
         specifier: workspace:*
         version: link:../library
-      zod-to-valibot:
-        specifier: workspace:*
-        version: link:../codemod/zod-to-valibot
     devDependencies:
       '@builder.io/qwik':
         specifier: ~1.17.2

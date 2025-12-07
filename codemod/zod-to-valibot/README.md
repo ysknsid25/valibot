@@ -5,23 +5,23 @@ Official codemod for automatically converting Zod schemas to Valibot schemas.
 ## Usage
 
 ```bash
-npx zod-to-valibot src/**/*
+npx @valibot/zod-to-valibot src/**/*
 ```
 
 ## Options
 
 ```bash
 # Dry run (preview changes)
-npx zod-to-valibot --dry src/**/*
+npx @valibot/zod-to-valibot --dry src/**/*
 
 # Verbose output
-npx zod-to-valibot --verbose=2 src/**/*
+npx @valibot/zod-to-valibot --verbose=2 src/**/*
 
 # Use a different parser (default is --parser=ts)
-npx zod-to-valibot --parser=babel src/**/*
+npx @valibot/zod-to-valibot --parser=babel src/**/*
 
 # Use different extensions (default is --extensions=ts,tsx,js,jsx)
-npx zod-to-valibot --extensions=ts src/**/*
+npx @valibot/zod-to-valibot --extensions=ts src/**/*
 ```
 
 For all available options, see [jscodeshift documentation](https://github.com/facebook/jscodeshift#options).

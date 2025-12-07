@@ -26,14 +26,14 @@ if (!hasExtensionsArg) {
 
 if (args.length === 0) {
   console.log(`
-Usage: zod-to-valibot [options] <files>
+Usage: @valibot/zod-to-valibot [options] <files>
 
 Convert Zod schemas to Valibot schemas
 
 Examples:
-  zod-to-valibot src/**/*.ts
-  zod-to-valibot --dry src/schemas.ts
-  zod-to-valibot --no-babel src/**/*.{ts,tsx}
+  @valibot/zod-to-valibot src/**/*.ts
+  @valibot/zod-to-valibot --dry src/schemas.ts
+  @valibot/zod-to-valibot --no-babel src/**/*.{ts,tsx}
 
 Common jscodeshift options:
   --dry         Run without making changes
