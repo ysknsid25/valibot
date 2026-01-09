@@ -9,7 +9,8 @@ export const properties: Record<string, PropertyProps> = {
     modifier: 'extends',
     type: {
       type: 'custom',
-      name: 'Guard',
+      name: 'GuardFunction',
+      href: '../GuardFunction/',
       generics: [
         {
           type: 'custom',
@@ -61,12 +62,22 @@ export const properties: Record<string, PropertyProps> = {
           name: 'TInput',
         },
         {
-          type: 'custom',
-          name: 'InferGuarded',
-          generics: [
+          type: 'intersect',
+          options: [
             {
               type: 'custom',
-              name: 'TGuard',
+              name: 'TInput',
+            },
+            {
+              type: 'custom',
+              name: 'InferGuardOutput',
+              href: '../InferGuardOutput/',
+              generics: [
+                {
+                  type: 'custom',
+                  name: 'TGuard',
+                },
+              ],
             },
           ],
         },

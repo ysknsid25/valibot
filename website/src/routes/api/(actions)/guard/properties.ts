@@ -9,7 +9,8 @@ export const properties: Record<string, PropertyProps> = {
     modifier: 'extends',
     type: {
       type: 'custom',
-      name: 'Guard',
+      name: 'GuardFunction',
+      href: '../GuardFunction/',
       generics: [
         {
           type: 'custom',
