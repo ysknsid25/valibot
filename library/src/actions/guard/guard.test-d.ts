@@ -16,6 +16,7 @@ describe('guard', () => {
         GuardAction<string, typeof isPixelString, undefined>
       >();
     });
+
     test('with string message', () => {
       expectTypeOf(guard(isPixelString, 'message')).toEqualTypeOf<
         GuardAction<string, typeof isPixelString, 'message'>
