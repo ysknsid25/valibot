@@ -33,8 +33,9 @@
 ## Advanced
 
 - [Naming](/guides/naming-convention/)
-- [Async](/guides/async-validation/)
+- [Internals](/guides/internals/)
 - [JSON Schema](/guides/json-schema/)
+- [Async](/guides/async-validation/)
 - [i18n](/guides/internationalization/)
 
 ## Migration
