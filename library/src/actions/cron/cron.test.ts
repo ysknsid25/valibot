@@ -143,5 +143,42 @@ describe('cron', () => {
         '***** ',      // no spaces
       ]);
     });
+
+    test('for out-of-range values', () => {
+      expectActionIssue(action, baseIssue, [
+        '60 0 1 1 0',    // minute > 59
+        '0 24 1 1 0',    // hour > 23
+        '0 0 0 1 0',     // day < 1
+        '0 0 32 1 0',    // day > 31
+        '0 0 1 0 0',     // month < 1
+        '0 0 1 13 0',    // month > 12
+        '0 0 1 1 7',     // weekday > 6
+        '99 25 32 13 8', // all out of range
+      ]);
+    });
+
+    test('for invalid ranges', () => {
+      expectActionIssue(action, baseIssue, [
+        '30-10 * * * *', // from > to
+        '0 20-10 * * *', // from > to
+        '1-2-3 * * * *', // multiple range operators
+        '1- * * * *',    // trailing dash
+      ]);
+    });
+
+    test('for invalid step values', () => {
+      expectActionIssue(action, baseIssue, [
+        '*/0 * * * *',   // step must be >= 1
+        '0 */0 * * *',   // step must be >= 1
+        '1/2/3 * * * *', // multiple step operators
+      ]);
+    });
+
+    test('for trailing operators', () => {
+      expectActionIssue(action, baseIssue, [
+        '1, * * * *', // trailing comma
+        '0,30, * * * *', // trailing comma in list
+      ]);
+    });
   });
 });

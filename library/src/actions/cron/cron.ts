@@ -151,22 +151,81 @@ export interface CronAction<
 }
 
 // =====================
-// Field Pattern
+// Field Ranges
 // =====================
 
 /**
- * Cron field pattern regex.
- * Matches: * | *\/N | N | N-M | N\/S | N,M,...
+ * Valid [min, max] value ranges for each cron field:
+ * minute, hour, day-of-month, month, day-of-week.
  */
-const CRON_FIELD_PATTERN = /^(?:\*(?:\/\d+)?|\d+(?:[-,/]\d+)*)$/u;
+const CRON_FIELD_RANGES: readonly (readonly [number, number])[] = [
+  [0, 59],
+  [0, 23],
+  [1, 31],
+  [1, 12],
+  [0, 6],
+];
 
 // =====================
 // Helper Functions
 // =====================
 
+function _inRange(value: string, min: number, max: number): boolean {
+  const n = parseInt(value, 10);
+  return n >= min && n <= max;
+}
+
+/**
+ * Validates one comma-separated item within a cron field.
+ * Supports: *, *\/step, N, N-M, N\/step, N-M\/step
+ *
+ * @param item The item to validate.
+ * @param min The minimum allowed value for this field.
+ * @param max The maximum allowed value for this field.
+ *
+ * @returns Whether the item is valid.
+ */
+function _isValidCronItem(
+  item: string,
+  min: number,
+  max: number
+): boolean {
+  const slashIndex = item.indexOf('/');
+  let base: string;
+  if (slashIndex !== -1) {
+    const step = item.slice(slashIndex + 1);
+    if (!/^\d+$/u.test(step) || parseInt(step, 10) < 1) return false;
+    base = item.slice(0, slashIndex);
+  } else {
+    base = item;
+  }
+
+  if (base === '*') return true;
+
+  const dashIndex = base.indexOf('-');
+  if (dashIndex !== -1) {
+    const from = base.slice(0, dashIndex);
+    const to = base.slice(dashIndex + 1);
+    return (
+      /^\d+$/u.test(from) &&
+      /^\d+$/u.test(to) &&
+      _inRange(from, min, max) &&
+      _inRange(to, min, max) &&
+      parseInt(from, 10) <= parseInt(to, 10)
+    );
+  }
+
+  return /^\d+$/u.test(base) && _inRange(base, min, max);
+}
+
+function _isValidCronField(field: string, min: number, max: number): boolean {
+  if (field.length === 0) return false;
+  return field.split(',').every((item) => _isValidCronItem(item, min, max));
+}
+
 /**
  * Validates a string as a cron expression at runtime.
- * Splits into 5 fields and checks each against {@link CRON_FIELD_PATTERN}.
+ * Splits into 5 fields and checks each against its allowed value range.
  *
  * @param input The string to validate.
  *
@@ -174,7 +233,13 @@ const CRON_FIELD_PATTERN = /^(?:\*(?:\/\d+)?|\d+(?:[-,/]\d+)*)$/u;
  */
 function _isCron(input: string): boolean {
   const fields = input.split(' ');
-  return fields.length === 5 && fields.every((f) => CRON_FIELD_PATTERN.test(f));
+  return (
+    fields.length === 5 &&
+    fields.every((field, index) => {
+      const [min, max] = CRON_FIELD_RANGES[index];
+      return _isValidCronField(field, min, max);
+    })
+  );
 }
 
 /**
