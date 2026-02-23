@@ -10,13 +10,27 @@ import { _addIssue } from '../../utils/index.ts';
 // =====================
 
 /**
- * Cron brand symbol. Kept unexported to prevent external forgery.
+ * Cron brand symbol.
+ *
+ * This symbol is kept unexported so that, at the type level, only this module
+ * can create values of type {@link CronExpression}. Note that this is a
+ * TypeScript branding pattern and does not provide any runtime security or
+ * cryptographic guarantee against forgery.
  */
 const cronBrand: unique symbol = Symbol();
 
 /**
- * A branded string type representing a validated cron expression.
- * Can only be obtained via {@link cron} action or {@link buildCron}.
+ * A branded string type representing a cron expression.
+ *
+ * At compile time, this brand helps distinguish cron expressions from plain
+ * strings and prevents many common mistakes when constructing or passing cron
+ * expressions around.
+ *
+ * {@link CronExpression} values can only be created via the {@link cron}
+ * action or {@link buildCron} helper. However, these helpers do not perform
+ * full runtime validation of the underlying string, so a `CronExpression`
+ * value is not a runtime guarantee that the string is a syntactically or
+ * semantically valid cron expression.
  */
 export type CronExpression = string & { readonly [cronBrand]: unknown };
 
