@@ -5,6 +5,7 @@ All notable changes to the library will be documented in this file.
 ## vX.X.X (Month DD, YYYY)
 
 - Add `guard` transformation action to narrow types using type predicates (pull request #1204)
+- Add `isrc` validation action to validate ISRC codes (pull request #1373)
 
 ## v1.2.0 (November 24, 2025)
 
