@@ -12,6 +12,8 @@ const FALSY = [false, 0, 'false', '0', 'no', 'n', 'off', 'disabled'];
 
 /**
  * Parse boolean config interface.
+ *
+ * @beta
  */
 export interface ParseBooleanConfig {
   /**
@@ -26,6 +28,8 @@ export interface ParseBooleanConfig {
 
 /**
  * Parse boolean issue interface.
+ *
+ * @beta
  */
 export interface ParseBooleanIssue<TInput> extends BaseIssue<TInput> {
   /**
@@ -44,6 +48,8 @@ export interface ParseBooleanIssue<TInput> extends BaseIssue<TInput> {
 
 /**
  * Parse boolean action interface.
+ *
+ * @beta
  */
 export interface ParseBooleanAction<
   TInput,
@@ -78,6 +84,8 @@ export interface ParseBooleanAction<
  * Creates a parse boolean transformation action.
  *
  * @returns A parse boolean action.
+ *
+ * @beta
  */
 export function parseBoolean<TInput>(): ParseBooleanAction<
   TInput,
@@ -91,6 +99,8 @@ export function parseBoolean<TInput>(): ParseBooleanAction<
  * @param config The parse boolean config.
  *
  * @returns A parse boolean action.
+ *
+ * @beta
  */
 export function parseBoolean<
   TInput,
@@ -104,6 +114,8 @@ export function parseBoolean<
  * @param message The error message.
  *
  * @returns A parse boolean action.
+ *
+ * @beta
  */
 export function parseBoolean<
   TInput,
