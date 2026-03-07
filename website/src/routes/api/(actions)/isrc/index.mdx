@@ -45,10 +45,7 @@ The following examples show how `isrc` can be used.
 Schema to validate an ISRC.
 
 ```ts
-const IsrcSchema = v.pipe(
-  v.string(),
-  v.isrc('The ISRC is badly formatted.')
-);
+const IsrcSchema = v.pipe(v.string(), v.isrc('The ISRC is badly formatted.'));
 
 // Valid ISRC formats:
 // 'USRC17607839'

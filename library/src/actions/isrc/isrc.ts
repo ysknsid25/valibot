@@ -1,5 +1,9 @@
 import { ISRC_REGEX } from '../../regex.ts';
-import type { BaseIssue, BaseValidation, ErrorMessage } from '../../types/index.ts';
+import type {
+  BaseIssue,
+  BaseValidation,
+  ErrorMessage,
+} from '../../types/index.ts';
 import { _addIssue } from '../../utils/index.ts';
 
 /**
