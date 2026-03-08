@@ -1,3 +1,8 @@
+---
+name: repo-website-guide-create
+description: Create conceptual documentation and tutorial pages for the Valibot website at website/src/routes/guides/. Use when adding guides about schemas, pipelines, async validation, migration, or other topics. Covers directory structure, MDX templates, frontmatter, and content guidelines.
+---
+
 # Adding Guides to Website
 
 Guide for creating conceptual documentation at `website/src/routes/guides/`.
@@ -97,8 +102,16 @@ Internal links use the `Link` component:
 ### Formatting
 
 - `inline code` for API names, variables, file names
-- **bold** for emphasis
+- **bold** for genuine emphasis only — not as inline section labels
 - Proper heading hierarchy (h1 title, h2 sections, h3 subsections)
+
+### Writing tone
+
+- Write conversational prose, not terse reference-doc style
+- Use first-person plural: "we recommend" not "you should"
+- Do not use bold as inline section labels (e.g. avoid `**Label:** content`). Use a proper subheading instead
+- Do not prefix blockquotes with bold labels (e.g. avoid `> **Note:** ...`). A plain `>` is correct
+- Bullet list items do not need a bold prefix on each item
 
 ### Images
 
