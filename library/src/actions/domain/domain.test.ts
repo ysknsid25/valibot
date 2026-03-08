@@ -72,6 +72,8 @@ describe('domain', () => {
         'EXAMPLE.COM',
         'sub.example.com',
         'sub.sub2.example.co.uk',
+        'a.example',
+        'xn--bcher-kva.example',
       ]);
     });
   });
@@ -138,6 +140,8 @@ describe('domain', () => {
         'ex_amp.le.com',
         '*.example.com',
         'http://example.com',
+        '127.0.0.1',
+        'example.123',
       ]);
     });
   });
