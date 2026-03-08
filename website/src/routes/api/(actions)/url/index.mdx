@@ -8,8 +8,7 @@ contributors:
   - yslpn
 ---
 
-import { Link } from '@builder.io/qwik-city';
-import { ApiList, Property } from '~/components';
+import { ApiList, Link, Property } from '~/components';
 import { properties } from './properties';
 
 # url
@@ -33,7 +32,7 @@ const Action = v.url<TInput, TMessage>(message);
 
 With `url` you can validate the formatting of a string. If the input is not an URL, you can use `message` to customize the error message.
 
-> If you only need to validate the domain name (host part), consider the <Link href="../domain/">`domain`</Link> action.
+> If you only need to validate an ASCII domain name, consider the <Link href="../domain/">`domain`</Link> action.
 
 ## Returns
 
