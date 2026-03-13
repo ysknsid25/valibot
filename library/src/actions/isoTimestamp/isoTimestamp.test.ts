@@ -127,7 +127,7 @@ describe('isoTimestamp', () => {
       ]);
     });
 
-    test('for space as separator in UTC offset', () => {
+    test('for space before UTC offset', () => {
       expectNoActionIssue(action, [
         // Space date/time separator + space before offset
         '0000-01-01 00:00:00.000 +00:00',

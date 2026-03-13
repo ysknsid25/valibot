@@ -81,7 +81,7 @@ export interface IsoTimestampAction<
  * Hint: The regex also allows a space as a separator between the date and time
  * parts instead of the "T" character.
  *
- * Hint: The regex also allows a space before the UTC offset (e.g., "+00:00")
+ * Hint: The regex also allows a space before the UTC offset (e.g., " +00:00")
  * to support PostgreSQL's `timestamptz` output format.
  *
  * @returns An ISO timestamp action.
@@ -111,7 +111,7 @@ export function isoTimestamp<TInput extends string>(): IsoTimestampAction<
  * Hint: The regex also allows a space as a separator between the date and time
  * parts instead of the "T" character.
  *
- * Hint: The regex also allows a space before the UTC offset (e.g., "+00:00")
+ * Hint: The regex also allows a space before the UTC offset (e.g., " +00:00")
  * to support PostgreSQL's `timestamptz` output format.
  *
  * @param message The error message.
