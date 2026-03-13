@@ -4,7 +4,7 @@ export const properties: Record<string, PropertyProps> = {
   maxSize: {
     type: 'number',
   },
-  duration: {
+  maxAge: {
     type: 'number',
   },
 };

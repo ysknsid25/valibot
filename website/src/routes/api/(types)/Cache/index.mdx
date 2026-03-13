@@ -1,24 +1,24 @@
 ---
-title: BaseCache
-description: Base cache interface.
+title: Cache
+description: Cache interface type.
 contributors:
-  - EskiMojo14
+  - fabianhiller
 ---
 
 import { Property } from '~/components';
 import { properties } from './properties';
 
-# BaseCache
+# Cache
 
-Base cache interface.
+Cache interface type.
 
 ## Generics
 
-- `TKey` <Property {...properties.TKey} />
 - `TValue` <Property {...properties.TValue} />
 
 ## Definition
 
-- `BaseCache`
+- `Cache`
   - `get` <Property {...properties.get} />
   - `set` <Property {...properties.set} />
+  - `clear` <Property {...properties.clear} />

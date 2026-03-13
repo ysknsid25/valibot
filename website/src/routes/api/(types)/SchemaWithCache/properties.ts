@@ -19,101 +19,62 @@ export const properties: Record<string, PropertyProps> = {
       ],
     },
   },
-  TOptions: {
+  TCacheConfig: {
     modifier: 'extends',
     type: {
       type: 'union',
       options: [
         {
           type: 'custom',
-          name: 'CacheOptions',
-          href: '../CacheOptions/',
-        },
-        {
-          type: 'custom',
-          name: 'CacheInstanceOptions',
-          href: '../CacheInstanceOptions/',
-          generics: [
-            {
-              type: 'custom',
-              name: 'TSchema',
-            },
-          ],
+          name: 'CacheConfig',
+          href: '../CacheConfig/',
         },
         'undefined',
       ],
     },
   },
-  options: {
+  cacheConfig: {
     type: {
       type: 'custom',
-      name: 'TOptions',
+      name: 'TCacheConfig',
     },
   },
   cache: {
     type: {
-      type: 'conditional',
-      conditions: [
+      type: 'custom',
+      name: 'Cache',
+      href: '../Cache/',
+      generics: [
         {
-          type: {
-            type: 'custom',
-            name: 'TOptions',
-          },
-          extends: {
-            type: 'object',
-            entries: [
-              {
-                key: 'cache',
-                value: {
+          type: 'custom',
+          name: 'OutputDataset',
+          href: '../OutputDataset/',
+          generics: [
+            {
+              type: 'custom',
+              name: 'InferOutput',
+              href: '../InferOutput/',
+              generics: [
+                {
                   type: 'custom',
-                  modifier: 'infer',
-                  name: 'TCache',
+                  name: 'TSchema',
                 },
-              },
-            ],
-          },
-          true: {
-            type: 'custom',
-            name: 'TCache',
-          },
+              ],
+            },
+            {
+              type: 'custom',
+              name: 'InferIssue',
+              href: '../InferIssue/',
+              generics: [
+                {
+                  type: 'custom',
+                  name: 'TSchema',
+                },
+              ],
+            },
+          ],
         },
       ],
-      false: {
-        type: 'custom',
-        name: '_Cache',
-        generics: [
-          'unknown',
-          {
-            type: 'custom',
-            name: 'OutputDataset',
-            href: '../OutputDataset/',
-            generics: [
-              {
-                type: 'custom',
-                name: 'InferOutput',
-                href: '../InferOutput/',
-                generics: [
-                  {
-                    type: 'custom',
-                    name: 'TSchema',
-                  },
-                ],
-              },
-              {
-                type: 'custom',
-                name: 'InferIssue',
-                href: '../InferIssue/',
-                generics: [
-                  {
-                    type: 'custom',
-                    name: 'TSchema',
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-      },
     },
   },
   SchemaWithCache: {

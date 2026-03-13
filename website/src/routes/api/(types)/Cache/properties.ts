@@ -1,10 +1,6 @@
 import type { PropertyProps } from '~/components';
 
 export const properties: Record<string, PropertyProps> = {
-  TKey: {
-    modifier: 'extends',
-    type: 'any',
-  },
   TValue: {
     modifier: 'extends',
     type: 'any',
@@ -15,10 +11,7 @@ export const properties: Record<string, PropertyProps> = {
       params: [
         {
           name: 'key',
-          type: {
-            type: 'custom',
-            name: 'TKey',
-          },
+          type: 'unknown',
         },
       ],
       return: {
@@ -39,10 +32,7 @@ export const properties: Record<string, PropertyProps> = {
       params: [
         {
           name: 'key',
-          type: {
-            type: 'custom',
-            name: 'TKey',
-          },
+          type: 'unknown',
         },
         {
           name: 'value',
@@ -52,6 +42,13 @@ export const properties: Record<string, PropertyProps> = {
           },
         },
       ],
+      return: 'void',
+    },
+  },
+  clear: {
+    type: {
+      type: 'function',
+      params: [],
       return: 'void',
     },
   },

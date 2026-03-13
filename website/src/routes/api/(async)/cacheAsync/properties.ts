@@ -39,26 +39,15 @@ export const properties: Record<string, PropertyProps> = {
       ],
     },
   },
-  TOptions: {
+  TCacheConfig: {
     modifier: 'extends',
     type: {
       type: 'union',
       options: [
         {
           type: 'custom',
-          name: 'CacheOptions',
-          href: '../CacheOptions/',
-        },
-        {
-          type: 'custom',
-          name: 'CacheInstanceOptions',
-          href: '../CacheInstanceOptions/',
-          generics: [
-            {
-              type: 'custom',
-              name: 'TSchema',
-            },
-          ],
+          name: 'CacheConfig',
+          href: '../CacheConfig/',
         },
         'undefined',
       ],
@@ -70,10 +59,10 @@ export const properties: Record<string, PropertyProps> = {
       name: 'TSchema',
     },
   },
-  options: {
+  config: {
     type: {
       type: 'custom',
-      name: 'TOptions',
+      name: 'TCacheConfig',
     },
   },
   Schema: {
@@ -88,7 +77,7 @@ export const properties: Record<string, PropertyProps> = {
         },
         {
           type: 'custom',
-          name: 'TOptions',
+          name: 'TCacheConfig',
         },
       ],
     },

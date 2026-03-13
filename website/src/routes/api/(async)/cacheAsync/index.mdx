@@ -4,6 +4,7 @@ description: Creates a version of a schema that caches its output.
 source: /methods/cache/cacheAsync.ts
 contributors:
   - EskiMojo14
+  - fabianhiller
 ---
 
 import { ApiList, Property } from '~/components';
@@ -14,18 +15,18 @@ import { properties } from './properties';
 Creates a version of a schema that caches its output.
 
 ```ts
-const Schema = v.cacheAsync<TSchema, TOptions>(schema, options);
+const Schema = v.cacheAsync<TSchema, TCacheConfig>(schema, config);
 ```
 
 ## Generics
 
 - `TSchema` <Property {...properties.TSchema} />
-- `TOptions` <Property {...properties.TOptions} />
+- `TCacheConfig` <Property {...properties.TCacheConfig} />
 
 ## Parameters
 
 - `schema` <Property {...properties.schema} />
-- `options` <Property {...properties.options} />
+- `config` <Property {...properties.config} />
 
 ### Explanation
 
@@ -60,19 +61,7 @@ const MaxSizeSchema = v.cacheAsync(v.string(), { maxSize: 100 });
 Schema that caches its output for a maximum of 10 seconds.
 
 ```ts
-const MaxAgeSchema = v.cacheAsync(v.string(), { duration: 10_000 });
-```
-
-### Custom cache schema
-
-Schema that uses a custom cache instance, in this case [QuickLRU](https://github.com/sindresorhus/quick-lru).
-
-```ts
-import QuickLRU from 'quick-lru';
-
-const CustomCacheSchema = v.cacheAsync(v.string(), {
-  cache: new QuickLRU({ maxSize: 1000 }),
-});
+const MaxAgeSchema = v.cacheAsync(v.string(), { maxAge: 10_000 });
 ```
 
 ## Related
