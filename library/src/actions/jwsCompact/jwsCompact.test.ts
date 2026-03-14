@@ -70,13 +70,13 @@ describe('jwsCompact', () => {
 
     test('for valid JWS compact strings', () => {
       expectNoActionIssue(action, [
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
-        'eyJhbGciOiJSUzI1NiIsImtpZCI6IjEifQ.eyJpc3MiOiJleGFtcGxlLmNvbSIsImV4cCI6MTY4MTk3OTAyMn0.DBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk',
-        'eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2ODI1MDAwMDB9.dBjftJeZ4CVP_mB92K27uhbUJW1p1r_wW1gFWFOEjXk',
-        'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6dHJ1ZX0.OX6Ys9b0N_0dQPGPv_7nAYtwo7i_S3lBCJoZ4CZz2uk',
-        'eyJhbGciOiJIUzI1NiIsImtpZCI6IjEifQ.eyJzdWIiOiIxMjMiLCJpc3MiOiJleGFtcGxlLmNvbSJ9.xmx1rd_lFfq7uO_vAnCkBZW4h_Mdw-CJNh0-j8l1DEk',
-        'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.c2lnbmF0dXJl',
-        'eyJhbGciOiJub25lIn0.eyJzdWIiOiIxMjMifQ.',
+        'ab.cd.ef',
+        'abc.def.ghi',
+        'abcd.efgh.ijkl',
+        'abcdef.ghijkl.mnopqr',
+        'ab_cd-.ef-gh_.ij_kl-',
+        'abcdefgh.ijklmnop.qrstuvwx',
+        'abcd.efgh.',
       ]);
     });
   });
@@ -96,10 +96,7 @@ describe('jwsCompact', () => {
     });
 
     test('for missing segments', () => {
-      expectActionIssue(action, baseIssue, [
-        'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0',
-        'header.payload',
-      ]);
+      expectActionIssue(action, baseIssue, ['abcd.efgh', 'segment.twopart']);
     });
 
     test('for additional segments', () => {
@@ -112,25 +109,25 @@ describe('jwsCompact', () => {
     test('for invalid base64url segments', () => {
       expectActionIssue(action, baseIssue, [
         'a.a.a',
-        'a=.a.a',
+        'ab=.cd.ef',
         'abc==.def.ghi',
-        'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.c2lnbmF0dXJl==',
+        'abcd.efgh.ijkl==',
       ]);
     });
 
     test('for blank spaces', () => {
       expectActionIssue(action, baseIssue, [
-        ' eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.signature',
-        'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.signature ',
-        'eyJhbGciOiJIUzI1NiJ9 .eyJzdWIiOiIxMjM0NTY3ODkwIn0.signature',
+        ' abcd.efgh.ijkl',
+        'abcd.efgh.ijkl ',
+        'abcd .efgh.ijkl',
       ]);
     });
 
     test('for invalid characters', () => {
       expectActionIssue(action, baseIssue, [
-        'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.sign@ture',
-        'header.payload.signa ture',
-        'header.payload.sig\\u00a9nature',
+        'abcd.efgh.ij@l',
+        'segment.twopart.si gnature',
+        'segment.twopart.si\\u00a9gnature',
       ]);
     });
   });
