@@ -5,17 +5,41 @@ export const properties: Record<string, PropertyProps> = {
     modifier: 'extends',
     type: 'any',
   },
+  key: {
+    type: {
+      type: 'function',
+      params: [
+        {
+          name: 'input',
+          type: 'unknown',
+        },
+        {
+          name: 'config',
+          optional: true,
+          type: {
+            type: 'custom',
+            name: 'Config',
+            href: '../Config/',
+            generics: [
+              {
+                type: 'custom',
+                name: 'BaseIssue',
+                href: '../BaseIssue/',
+                generics: ['unknown'],
+              },
+            ],
+          },
+        },
+      ],
+      return: 'string',
+    },
+  },
   get: {
     type: {
       type: 'function',
       params: [
         {
           name: 'key',
-          type: 'unknown',
-        },
-        {
-          name: 'configKey',
-          optional: true,
           type: 'string',
         },
       ],
@@ -37,7 +61,7 @@ export const properties: Record<string, PropertyProps> = {
       params: [
         {
           name: 'key',
-          type: 'unknown',
+          type: 'string',
         },
         {
           name: 'value',
@@ -45,11 +69,6 @@ export const properties: Record<string, PropertyProps> = {
             type: 'custom',
             name: 'TValue',
           },
-        },
-        {
-          name: 'configKey',
-          optional: true,
-          type: 'string',
         },
       ],
       return: 'void',
