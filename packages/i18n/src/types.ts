@@ -16,6 +16,7 @@ export type Language = {
     | 'ja'
     | 'ko'
     | 'kr'
+    | 'mn'
     | 'nb'
     | 'nl'
     | 'pl'
