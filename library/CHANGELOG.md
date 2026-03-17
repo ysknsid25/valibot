@@ -2,7 +2,7 @@
 
 All notable changes to the library will be documented in this file.
 
-## vX.X.X (Month DD, YYYY)
+## v1.3.0 (March 17, 2026)
 
 - Add `guard` transformation action to narrow types using type predicates (pull request #1204)
 - Add `parseBoolean` transformation action to parse boolean values from strings and other types (pull request #1251)
