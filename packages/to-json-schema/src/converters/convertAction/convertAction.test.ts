@@ -1293,11 +1293,9 @@ describe('convertAction', () => {
 
   test('should convert value action for openapi-3.0', () => {
     expect(
-      convertAction(
-        { type: 'string' },
-        v.value<v.ValueInput, 'foo'>('foo'),
-        { target: 'openapi-3.0' }
-      )
+      convertAction({ type: 'string' }, v.value<v.ValueInput, 'foo'>('foo'), {
+        target: 'openapi-3.0',
+      })
     ).toStrictEqual({
       type: 'string',
       enum: ['foo'],
