@@ -30,9 +30,7 @@ const Action = v.jwsCompact<TInput, TMessage>(message);
 
 With `jwsCompact` you can validate that a string matches the three-part compact string shape used by JWS compact serialization with unpadded Base64URL-like segments. If the input does not match this JWS compact string shape, you can use `message` to customize the error message.
 
-> Hint: This validation action only checks the three-part compact string shape. It does not decode the segments, verify the signature, or validate claims. Empty payload and signature segments are accepted when they appear as valid compact-serialization segments.
->
-> If you need full JWT validation, signature verification, or claim checks, use a dedicated library such as one from [jwt.io/libraries](https://www.jwt.io/libraries).
+> Hint: This validation action only checks the three-part compact string shape. It does not decode the segments, verify the signature, or validate claims. Empty payload and signature segments are accepted when they appear as valid compact-serialization segments. If you need full JWT validation, signature verification, or claim checks, use a dedicated library such as one from [jwt.io/libraries](https://www.jwt.io/libraries).
 
 ## Returns
 
