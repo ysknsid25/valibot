@@ -185,11 +185,7 @@ function _inRange(value: string, min: number, max: number): boolean {
  *
  * @returns Whether the item is valid.
  */
-function _isValidCronItem(
-  item: string,
-  min: number,
-  max: number
-): boolean {
+function _isValidCronItem(item: string, min: number, max: number): boolean {
   const slashIndex = item.indexOf('/');
   let base: string;
   if (slashIndex !== -1) {
