@@ -35,10 +35,11 @@ jobs:
 
       # Runs the benchmarks on the base and head commits and comments the comparison
       - name: Compare benchmarks
-        uses: ouka-lab/vitest-bench-compare@54b9cc02550dbee71b66e3ee1333736d131cb491 # v1.0.1
+        uses: ouka-lab/vitest-bench-compare@9ca40c72c887ddc94fb44873d0a63cefa04efc0c # v1.0.2
         with:
           dir: ${{ runner.temp }}/bench
           source: library/benchmarks
           install: pnpm install --frozen-lockfile
           run: pnpm exec vitest bench --run
+          dry-run: true
           working-directory: library
