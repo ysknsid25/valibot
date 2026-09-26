@@ -2,6 +2,10 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
+    benchmark: {
+      enabled: true,
+      include: ['**/*.bench.test.ts'],
+    },
     environment: 'jsdom',
     isolate: false,
     coverage: {
