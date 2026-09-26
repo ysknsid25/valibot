@@ -94,11 +94,11 @@ export function object(
     entries,
     message,
     '~run'(dataset, config) {
-      // Get input value from dataset
-      const input = dataset.value;
-
       // If root type is valid, check nested types
-      if (input && typeof input === 'object') {
+      if (dataset.value && typeof dataset.value === 'object') {
+        // Copy input value so that the original input is never touched
+        const input: object = JSON.parse(JSON.stringify(dataset.value));
+
         // Set typed to `true` and value to blank object
         // @ts-expect-error
         dataset.typed = true;
